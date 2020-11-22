@@ -18,13 +18,13 @@
 
     <ItemGroup>
       <Reference Include="Bitter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\..\Tests\DataShunt\Bitter.dll</HintPath>
+        <HintPath>Bitter.dll</HintPath>
       </Reference>
       <Reference Include="FauFau, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-        <HintPath>..\..\Tests\DataShunt\FauFau.dll</HintPath>
+        <HintPath>FauFau.dll</HintPath>
       </Reference>
       <Reference Include="SharpCompress, Version=0.22.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96">
-        <HintPath>..\..\Tests\DataShunt\SharpCompress.dll</HintPath>
+        <HintPath>SharpCompress.dll</HintPath>
       </Reference>
     </ItemGroup>
 
