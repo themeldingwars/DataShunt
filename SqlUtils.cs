@@ -21,13 +21,20 @@ namespace DataShunt
             Conn.Open();
         }
 
+        public static void CreateSchema()
+        {
+            string    sql = $"CREATE SCHEMA IF NOT EXISTS {Program.Config.SqlNamespace}; SET search_path TO {Program.Config.SqlNamespace};";
+            using var cmd = new NpgsqlCommand(sql, Conn);
+            cmd.ExecuteNonQuery();
+        }
+
         public static void CreateCreateSqls(List<SdbTableMapping.TableMapping> mapping, bool createTables = false)
         {
             var sb = new StringBuilder();
 
             foreach (var table in mapping) {
                 var sql = CreateTableSql(table);
-                SaveSql($"Create_{table.Name}", sql);
+                //SaveSql($"Create_{table.Name}", sql);
 
                 sb.AppendLine(sql);
                 sb.AppendLine();
