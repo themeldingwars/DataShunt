@@ -174,7 +174,8 @@ namespace DataShunt
                 var table     = sdbutils.Mapping[index];
                 var sb        = new StringBuilder();
                 var tableName = Program.Config.UseNamesInTables ? table.Name : $"H_{table.Id:X}";
-                sb.AppendLine($"CREATE VIEW \"VM_{tableName}\" AS SELECT ");
+                var viewName = table.Name ?? $"H_{table.Id:X}";
+                sb.AppendLine($"CREATE VIEW \"VM_{viewName}\" AS SELECT ");
 
                 for (var i = 0; i < table.Colums.Count; i++) {
                     var colum     = table.Colums[i];
@@ -224,7 +225,7 @@ namespace DataShunt
         {
             var sb = new StringBuilder();
             foreach (var tableMapping in tableMappings) {
-                var name = Program.Config.UseNamesInTables ? tableMapping.Name : $"H_{tableMapping.Id:X}";
+                var name = tableMapping.Name ?? $"H_{tableMapping.Id:X}";
                 var sql  = $"DROP VIEW IF EXISTS {Program.Config.SqlNamespace}.\"VM_{name}\"; ";
                 sb.Append(sql);
             }
@@ -371,8 +372,8 @@ namespace DataShunt
                 SqlTypes.VECTOR3_ARRAY    => "vector3[]",
                 SqlTypes.VECTOR4          => "vector4",
                 SqlTypes.VECTOR4_ARRAY    => "vector4[]",
-                SqlTypes.MATRIX4X4        => "matrix4x4",
-                SqlTypes.HALFMATRIX4X3    => "halfMatrix4x3",
+                SqlTypes.MATRIX4_X4        => "matrix4x4",
+                SqlTypes.HALFMATRIX4_X3    => "halfMatrix4x3",
                 SqlTypes.BOX3             => "box3",
                 _                         => "bytea"
             };

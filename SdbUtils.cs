@@ -130,8 +130,8 @@ namespace DataShunt
                 StaticDB.DBType.Vector3Array  => SqlTypes.VECTOR3_ARRAY,
                 StaticDB.DBType.Vector4       => SqlTypes.VECTOR4,
                 StaticDB.DBType.Vector4Array  => SqlTypes.VECTOR4_ARRAY,
-                StaticDB.DBType.Matrix4x4     => SqlTypes.MATRIX4X4,
-                StaticDB.DBType.HalfMatrix4x3 => SqlTypes.HALFMATRIX4X3,
+                StaticDB.DBType.Matrix4x4     => SqlTypes.MATRIX4_X4,
+                StaticDB.DBType.HalfMatrix4x3 => SqlTypes.HALFMATRIX4_X3,
                 StaticDB.DBType.Box3          => SqlTypes.BOX3,
                 StaticDB.DBType.ByteArray     => SqlTypes.BLOB,
 
@@ -162,7 +162,8 @@ namespace DataShunt
 
         public string GetFieldName(uint hash)
         {
-            if (FieldNameLookup.TryGetValue(hash, out var value)) return value;
+            if (Program.Config.NameOverridesDict.TryGetValue(hash, out var value)) return value;
+            if (FieldNameLookup.TryGetValue(hash, out var value2)) return value2;
 
             return $"H_{hash:X}";
         }
@@ -198,8 +199,8 @@ namespace DataShunt
         VECTOR3_ARRAY,
         VECTOR4,
         VECTOR4_ARRAY,
-        MATRIX4X4,
-        HALFMATRIX4X3,
+        MATRIX4_X4,
+        HALFMATRIX4_X3,
         BOX3
     }
 }

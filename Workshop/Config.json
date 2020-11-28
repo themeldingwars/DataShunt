@@ -1,5 +1,8 @@
 {
   "SdbPath": "clientdb.sd2",
   "OutDir": "output",
-  "//OnlyTheseTables": [ 0x35d88cc2, 0x69CE585D, 0xE4DD24DD ]
+  "//OnlyTheseTables": [ 0x35d88cc2, 0x69CE585D, 0xE4DD24DD ],
+  "NameOverrides": {
+    "0x9377481E" : "WarpaintPalettes"
+  }
 }
